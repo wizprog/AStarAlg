@@ -33,6 +33,7 @@ public class AStar {
 	
 	public AStar() {
 		super();
+		this.finish = new Node();
 		open_list = new PriorityQueue<Node>();
 		closed_list = new HashMap<Integer, Node>();
 		expandedCounter = 0;
@@ -45,20 +46,16 @@ public class AStar {
 		LinkedList<Node> lcl = new LinkedList<Node>();
 		HashMap<Integer, Boolean> open_list_map = new HashMap<Integer, Boolean>();
 		
-		Node finish = new Node();
-		finish.x = fns.getX();
-		finish.y = fns.getY();
+		this.finish.x = fns.getX();
+		this.finish.y = fns.getY();
 		
 		this.global_map = map;
 		Node start = new Node();
 		start.x = str.getX();
 		start.y = str.getY();
 		
-		start.fScore = start.manhattanDistance(finish);
-		
-		this.finish.x = fns.getX();
-		this.finish.y = fns.getY();
-		
+		start.fScore = start.manhattanDistance(this.finish);
+
 		int N = this.global_map.length;
 		
 		open_list.add(start);

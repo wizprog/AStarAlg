@@ -9,17 +9,24 @@ public class Server {
 		// TODO Auto-generated method stub
 		
 		int [][] map = new int[][]{
-			{1, 1, 1, 1},
-			{0, 1, 0, 0},
-			{1, 1, 1, 1},
-			{1, 1, 1, 1}
+			{1, 1, 1, 1, 1, 1, 1, 1, 1},
+			{0, 0, 1, 0, 0, 0, 0, 0, 1},
+			{1, 1, 1, 1, 0, 1, 1, 0, 1},
+			{1, 1, 1, 1, 1, 1, 1, 0, 0},
+			{1, 0, 0, 0, 0, 1, 0, 0, 0},
+			{1, 1, 1, 1, 0, 1, 1, 1, 1},
+			{1, 1, 1, 1, 0, 1, 0, 0, 1},
+			{1, 1, 1, 1, 0, 1, 0, 0, 1},
+			{1, 1, 1, 1, 0, 1, 0, 0, 1},
+
 	};
 		
 		Point start = new Point(0,0);
-		Point finish = new Point(3,3);
+		Point finish = new Point(8,8);
 		
 		AStar zvezdica = new AStar();
-		zvezdica.execute(map, start, finish);
+		if (zvezdica.execute(map, start, finish)) System.out.println("DONE");
+		else System.out.println("NO PATH");
 		
 /*		HashMap<Integer, Node> closed_list = new HashMap<Integer, Node>();
 		
