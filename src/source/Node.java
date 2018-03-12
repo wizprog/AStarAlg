@@ -28,6 +28,7 @@ public class Node implements Comparable<Node> {
 		this.parent = null;
 	}
 	
+	
 	public int getgScore() {
 		return gScore;
 	}
@@ -69,6 +70,11 @@ public class Node implements Comparable<Node> {
 	
 	public int manhattanDistance(Node o) {
 		return Math.abs(this.x - o.x ) + Math.abs(this.y - o.y);
+	}
+
+	@Override
+	public String toString() {
+		return "Node [x=" + x + ", y=" + y + ", gScore=" + gScore + ", fScore=" + fScore + "]";
 	}
 	
 	
