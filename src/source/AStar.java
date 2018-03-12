@@ -81,12 +81,13 @@ public class AStar {
 						}
 						else {
 							Node m = open_list.poll();
-							while (m.x != object.x && m.y != object.y) {
+							while (m.x != object.x || m.y != object.y) {
 								helpMe.add(m);
 								m = open_list.poll();
 							}
 							
-							for (Node x : helpMe) open_list.add(x);
+							for (Node x : helpMe) if (m.x != x.x || m.y != x.y) open_list.add(x);
+							helpMe.clear();
 
 							if (object.getgScore() < m.getgScore()) open_list.add(object);
 								else open_list.add(m);
