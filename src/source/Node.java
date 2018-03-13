@@ -74,7 +74,7 @@ public class Node implements Comparable<Node> {
 
 	@Override
 	public String toString() {
-		return "Node [x=" + x + ", y=" + y + ", gScore=" + gScore + ", fScore=" + fScore + "]";
+		return  x + " " + y;
 	}
 	
 	

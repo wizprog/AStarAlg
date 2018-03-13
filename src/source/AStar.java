@@ -1,5 +1,6 @@
 package source;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -15,7 +16,8 @@ public class AStar {
 	private int lastCost;
 	private int expandedCounter;
 	Node finish;
-	int global_map[][];
+	byte global_map[][];
+	Path path_finder;
 	
 	
 	
@@ -28,6 +30,7 @@ public class AStar {
 		this.closed_list = mindists;
 		this.lastCost = lastCost;
 		this.expandedCounter = expandedCounter;
+		path_finder = new Path();
 		
 	}
 	
@@ -38,9 +41,15 @@ public class AStar {
 		closed_list = new HashMap<Integer, Node>();
 		expandedCounter = 0;
 		lastCost = 0;
+		path_finder = new Path();
 	}
 	
-	public boolean execute(int[][] map, Point str , Point fns) {
+	public Path getPath() {
+		return this.path_finder;
+	}
+	
+	
+	public boolean execute(byte[][] map, Point str , Point fns, PrintWriter printWriter) {
 		
 		Node current = null;
 		LinkedList<Node> lcl = new LinkedList<Node>();
@@ -68,7 +77,7 @@ public class AStar {
 		while(open_list.size() != 0) {
 			current = this.open_list.poll();
 			open_list_map.remove(current.x*N + current.y);
-			if (this.isDone(current)) { construct_path(current); return true; }
+			if (this.isDone(current)) { construct_path(current, printWriter); return true; }
 			else {
 				this.closed_list.put(current.x*N + current.y, current);
 				lcl = this.neighbors(current);
@@ -104,14 +113,26 @@ public class AStar {
 		return false;
 	}
 	
-	private void construct_path(Node finish2) {
+	private void construct_path(Node finish2 , PrintWriter printWriter) {
 		
 		Node pom = finish2;
+		LinkedList<Node> helpMe = new LinkedList<Node>();
+		int count = 1;
+		
 		while (pom.getParent() != null) {
-			System.out.println(pom);
+		//	this.path_finder.insertNode(pom);
+			helpMe.add(pom);
+			count++;
 			pom = pom.getParent();
 		}
+		helpMe.add(pom);
 		
+		printWriter.println(count);
+		while(!helpMe.isEmpty()) {
+			pom = helpMe.pollLast();
+			System.out.println(pom);
+			printWriter.println(pom);
+		}
 	}
 
 	public boolean isDone(Node o) {

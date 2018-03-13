@@ -26,6 +26,23 @@ public class Path {
 	public void insertNode(Node o) {
 		path.add(o);
 	}
+
+	@Override
+	public String toString() {
+		String out= "";
+		Node pom = null;
+		
+		out+=path.size() + "\n";
+		
+		while(!path.isEmpty()) {
+			pom = path.getLast();
+			out += pom + "\n";
+		}
+		
+		return out;
+	}
+	
+	
 	
 	
 	
