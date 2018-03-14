@@ -95,7 +95,7 @@ public class Server {
 				array2[i] = new Point( minmax - y2, minmax + x2);
 				array3[i] = new Point( minmax - y3, minmax + x3);
 
-				check(array1[i], array2[i], array3[i], matrix);
+				//check(array1[i], array2[i], array3[i], matrix);
 			}
 		
 	/*
