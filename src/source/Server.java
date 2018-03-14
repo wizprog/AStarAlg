@@ -16,6 +16,7 @@ public class Server {
 		File file = null;
 		Scanner scanner = null;
 		Scanner scanner1 = null; 
+		Scanner gitTest = null;
 	 // int[][] matrix = new int[2 * (int) Math.pow(10, 6)][2 * (int) Math.pow(10, 6)];
 		byte[][] matrix = new byte[30000][30000];
 		
@@ -38,6 +39,7 @@ public class Server {
 			try {
 				scanner = new Scanner(file);
 				scanner1 = new Scanner(file);
+				gitTest = new Scanner(file);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
